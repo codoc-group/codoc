@@ -25,5 +25,4 @@ add_custom_target(codoc-test)
 set_target_properties(codoc-test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
 # add test subfolders ---------------------------------------------------------
-add_subdirectory( abstract )
-add_subdirectory( parse )
+add_subdirectory( config )

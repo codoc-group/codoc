@@ -1,5 +1,5 @@
 #
-# codoc blacktriangles (c) 2018 ###############################################
+# codoc (c) blacktriangles 2018 ###############################################
 #
 
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)

@@ -1,24 +1,29 @@
 #
-# codoc blacktriangles (c) 2018 ###############################################
+# codoc (c) blacktriangles 2018 ###############################################
 #
 
 #
 # configuration ###############################################################
 #
 
-set(target abstract)
+set(target config)
 
 # Header and Source Files -----------------------------------------------------
 set(include_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(source_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(headers
-    ${include_path}/codoc/abstract.hh
-    ${include_path}/codoc/abstract/document.hh
+    ${include_path}/codoc/config.hh
 )
 
 set(sources
-    ${source_path}/codoc/abstract.cc
-    ${source_path}/codoc/abstract/document.cc
+    ${include_path}/codoc/config.cc
+)
+
+set(public_deps
+    absl::base
+)
+
+set(private_deps
 )
 
 #
@@ -64,9 +69,11 @@ target_include_directories(${target}
 # link libraries --------------------------------------------------------------
 target_link_libraries(${target}
     PRIVATE
+        ${private_deps}
 
     PUBLIC
         ${DEFAULT_LIBRARIES}
+        ${public_deps}
 
     INTERFACE
 )

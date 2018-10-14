@@ -12,11 +12,11 @@ set(headers
 )
 
 set(sources
-    parse_test.cc
+    config_test.cc
 )
 
 set(deps
-    parse
+   ${META_PROJECT_NAME}::config 
 )
 
 #
