@@ -27,7 +27,7 @@ matrix:
       compiler: gcc
       env:
         - CMAKE_CONFIGURATION=release BUILD_DIR=build
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
       addons:
         apt:
           sources:
@@ -40,14 +40,14 @@ matrix:
       compiler: gcc
       env:
         - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
       addons:
         apt:
           sources:
           - ubuntu-toolchain-r-test
           packages:
           - cmake
-          - g++-5
+          - g++-7
 
 before_install:
   - git submodule update --init --recursive
