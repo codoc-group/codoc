@@ -1,6 +1,5 @@
 #
-# codoc
-# blacktriangles (c) 2018
+# codoc blacktriangles (c) 2018 ###############################################
 #
 
 #

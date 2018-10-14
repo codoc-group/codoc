@@ -1,6 +1,26 @@
+#
+# codoc blacktriangles (c) 2018 ###############################################
+#
+
+#
+# config ######################################################################
+#
+
+set(target parse-test)
+
+set(headers
+)
+
+set(sources
+    parse_test.cc
+)
+
+set(deps
+    parse
+)
 
 # 
-# Target 'docs'
+# Documentation ###############################################################
 # 
 
 if(NOT OPTION_BUILD_DOCS)
@@ -10,9 +30,7 @@ endif()
 add_custom_target(docs)
 
 
-# 
-# Documentation
-# 
+# docs subdirectories ---------------------------------------------------------
 
 #add_subdirectory(api-docs)
 #add_subdirectory(manual)

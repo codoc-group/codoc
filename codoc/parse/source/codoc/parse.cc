@@ -1,5 +1,5 @@
 //
-// codoc (c) 2018 blacktriangles
+// codoc (c) 2018 blacktriangles ##############################################
 //
 
 #include "codoc/parse.hh"

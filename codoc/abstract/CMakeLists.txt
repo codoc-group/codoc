@@ -1,27 +1,14 @@
 #
-# codoc
-# blacktriangles (c) 2018
+# codoc blacktriangles (c) 2018 ###############################################
 #
 
 #
-# External dependencies #######################################################
-#
-
-#
-# Library name and options ####################################################
+# configuration ###############################################################
 #
 
 set(target abstract)
 
-message(STATUS "Lib ${target}")
-
-# Set API export file and macro
-string(MAKE_C_IDENTIFIER ${target} target_id)
-string(TOUPPER ${target_id} target_id)
-
-#
-# Header and Source Files #####################################################
-#
+# Header and Source Files -----------------------------------------------------
 set(include_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(source_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(headers
@@ -33,6 +20,16 @@ set(sources
     ${source_path}/codoc/abstract.cc
     ${source_path}/codoc/abstract/document.cc
 )
+
+#
+# Library name and options ####################################################
+#
+
+message(STATUS "Lib ${target}")
+
+# Set API export file and macro
+string(MAKE_C_IDENTIFIER ${target} target_id)
+string(TOUPPER ${target_id} target_id)
 
 #
 # Library #####################################################################
