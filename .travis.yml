@@ -49,6 +49,8 @@ matrix:
           - cmake
           - g++-5
 
+before_install:
+  - git submodule update --init --recursive
 
 before_script:
   - eval "${MATRIX_EVAL}"
