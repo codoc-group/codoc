@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <istream.h>
+
 namespace codoc
 {
 
@@ -13,6 +15,9 @@ namespace codoc
 //
 class config
 {
+public: // types --------------------------------------------------------------
+
+    using cpptoml::table section;
 
 public: // constructor / destructor -------------------------------------------
     
@@ -22,9 +27,14 @@ public: // constructor / destructor -------------------------------------------
     config();
 
     //
-    // constructor taking a path to the config file
+    // constructor taking a path to the config file.
     //
     config(const std::string& config_path);
+
+    //
+    // constructor taking an istream to the config data
+    //
+    config(std::istream& data);
 
     //
     // copy constructor
@@ -42,6 +52,16 @@ public: // constructor / destructor -------------------------------------------
     virtual ~config() = default;
 
 public: // public methods -----------------------------------------------------
+
+    //
+    // loads a config from the specified path
+    //
+    bool load(const std::string& config_path);
+
+    //
+    // loada a config from the specified istream
+    //
+    bool load(const std::istream& stream);
 
 public: // operator overrides -------------------------------------------------
 
