@@ -45,7 +45,7 @@ build:
   verbosity: minimal
   parallel: true
 
-test-script:
+test_script:
     - cmake --build build --target test
 
 only_commits:
