@@ -3,7 +3,7 @@ branches:
   only:
   - master
   - develop
-clone_folder: c:\projects\cmake-init
+clone_folder: c:\projects\codoc
 image:
 - Visual Studio 2013
 - Visual Studio 2015
@@ -41,9 +41,13 @@ before_build:
     cmake .. -G %generator%
 
 build:
-  project: c:\projects\cmake-init\build\codoc.sln
+  project: c:\projects\codoc\build\codoc.sln
   verbosity: minimal
   parallel: true
+
+test-scipt:
+    - cmake --build build --target test
+
 only_commits:
   files:
     - CMakeLists.txt

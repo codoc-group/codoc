@@ -20,7 +20,6 @@ set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all ta
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
  # Include custom cmake modules
-include(CTest)
 include(cmake/GetGitRevisionDescription.cmake)
 
 #
@@ -57,7 +56,7 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
+option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              OFF)
 option(OPTION_SELF_CONTAINED "Create a self-contained install with all dependencies." OFF)
 option(OPTION_BUILD_TESTS    "Build tests."                                           ON)
 option(OPTION_BUILD_DOCS     "Build documentation."                                   OFF)
@@ -72,6 +71,11 @@ option(OPTION_INSTALL_LOCAL  "Force install locally."                           
 # Generate folders for IDE targets (e.g., VisualStudio solutions)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(IDE_FOLDER "")
+
+project(${META_PROJECT_NAME} C CXX)
+
+# project includes ------------------------------------------------------------
+include(CTest)
 
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
