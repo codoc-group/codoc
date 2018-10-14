@@ -73,7 +73,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
-        /WX         # -> treat warnings as errors
+        /WX           # -> treat warnings as errors
 
         /wd4251       # -> disable warning: 'identifier': class 'type' needs to have dll-interface to be used by clients of class 'type2'
         /wd4592       # -> disable warning: 'identifier': symbol will be dynamically initialized (implementation limitation)
@@ -87,11 +87,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         $<$<CONFIG:Release>: 
         /Gw           # -> whole program global optimization
         /GS-          # -> buffer security check: no 
-        /GL           # -> whole program optimization: enable link-time code generation (disables Zi)
+        /LTGC         # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
         
-        # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
+        # No manual c++11 enable for MSVC as all supported MSVC versions for codoc have C++11 implicitly enabled (MSVC >=2013)
     )
 endif ()
 
@@ -129,11 +129,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         
         $<$<PLATFORM_ID:Darwin>:
             -pthread
-        >
-        
-        # Required for CMake < 3.1; should be removed if minimum required CMake version is raised.
-        $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
-            -std=c++11
         >
     )
 endif ()
