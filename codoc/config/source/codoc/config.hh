@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <istream.h>
+#include <istream>
 
 namespace codoc
 {
@@ -16,8 +16,6 @@ namespace codoc
 class config
 {
 public: // types --------------------------------------------------------------
-
-    using cpptoml::table section;
 
 public: // constructor / destructor -------------------------------------------
     
@@ -61,19 +59,19 @@ public: // public methods -----------------------------------------------------
     //
     // loada a config from the specified istream
     //
-    bool load(const std::istream& stream);
+    bool load(std::istream& stream);
 
 public: // operator overrides -------------------------------------------------
 
     //
     // assignment operator
     //
-    config& operator(const config& copy) = default;
+    config& operator=(const config& copy) = default;
 
     //
     // move operator
     //
-    config& operator(config&& move) = default;
+    config& operator=(config&& move) = default;
 
 private: // members -----------------------------------------------------------
 

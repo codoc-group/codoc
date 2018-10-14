@@ -21,6 +21,7 @@ set(sources
 
 set(public_deps
     absl::base
+    yaml-cpp
 )
 
 set(private_deps

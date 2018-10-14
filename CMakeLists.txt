@@ -99,7 +99,7 @@ set(project ${META_PROJECT_NAME})
 
 # Check for system dir install
 if(OPTION_INSTALL_LOCAL)
-    set(CMAKE_INSTALL_PREFIX "./dist")
+    set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/dist")
 endif()
 
 set(SYSTEM_DIR_INSTALL FALSE)

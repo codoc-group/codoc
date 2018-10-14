@@ -5,7 +5,7 @@
 #include "codoc/config.hh"
 
 #include <cassert>
-#include <ifstream>
+#include <fstream>
 
 namespace codoc
 {
@@ -52,7 +52,7 @@ bool config::load(const std::string& config_path)
 // ----------------------------------------------------------------------------
 //
 
-bool config::load(std::istream& stream)
+bool config::load(std::istream& /*stream*/)
 {
     return false;
 }

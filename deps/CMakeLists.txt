@@ -34,3 +34,12 @@ target_link_libraries(gtest-dev
 #
 
 add_subdirectory(abseil-cpp)
+
+#
+# Buld yaml-cpp ###############################################################
+#
+
+set(YAML_CPP_BUILD_TESTS   OFF CACHE BOOL "")
+set(YAML_CPP_BUILD_TOOLS   OFF CACHE BOOL "")
+set(YAML_CPP_BUILD_CONTRIB OFF CACHE BOOL "")
+add_subdirectory(yaml-cpp)
