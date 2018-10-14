@@ -44,7 +44,7 @@ build:
   parallel: true
 
 test_script:
-    - cmake --build build --target test
+    - cmake --build . --target test
 
 only_commits:
   files:
