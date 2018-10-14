@@ -1,11 +1,23 @@
 #
-# codoc
-# blacktriangles (c) 2018
+# codoc blacktriangles (c) 2018
 #
 
 #
-# External dependencies #######################################################
+# config ######################################################################
 #
+
+set(target abstract-test)
+
+set(headers
+)
+
+set(sources
+    abstract_test.cc
+)
+
+set(deps
+    abstract
+)
 
 #
 # Library name and options ####################################################
@@ -35,7 +47,7 @@ set(sources
 
 add_executable(${target} ${header} ${sources})
 add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
-add_test(NAME ${target} COMMAND ${target})
+add_test(NAME ${META_PROJECT_NAME}::${target} COMMAND ${target})
 
 # properties ------------------------------------------------------------------
 set_target_properties(${target}

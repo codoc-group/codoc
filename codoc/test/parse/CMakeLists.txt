@@ -3,14 +3,25 @@
 #
 
 #
-# External dependencies #######################################################
-#
-
-#
-# Library name and options ####################################################
+# config ######################################################################
 #
 
 set(target parse-test)
+
+set(headers
+)
+
+set(sources
+    parse_test.cc
+)
+
+set(deps
+    parse
+)
+
+#
+# Library options #############################################################
+#
 
 message(STATUS "Test ${target}")
 
@@ -19,22 +30,12 @@ string(MAKE_C_IDENTIFIER ${target} target_id)
 string(TOUPPER ${target_id} target_id)
 
 #
-# Header and Source Files #####################################################
-#
-set(headers
-)
-
-set(sources
-    parse_test.cc
-)
-
-#
 # Library #####################################################################
 #
 
 add_executable(${target} ${header} ${sources})
 add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
-add_test(NAME ${target} COMMAND ${target})
+add_test(NAME ${META_PROJECT_NAME}::${target} COMMAND ${target})
 
 # properties ------------------------------------------------------------------
 set_target_properties(${target}
@@ -57,7 +58,7 @@ target_link_libraries(${target}
     PRIVATE
         gtest-dev
         gtest_main
-        parse 
+        ${deps}
 )
 
 # compile definitions ---------------------------------------------------------
