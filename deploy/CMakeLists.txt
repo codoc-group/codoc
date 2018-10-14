@@ -1,22 +1,26 @@
+#
+# codoc
+# blacktriangles (c) 2018
+#
 
 # 
-# Target 'pack'
+# Target 'pack' ###############################################################
 # 
 
 add_custom_target(pack)
 set_target_properties(pack PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
 
-# Install additional runtime dependencies
+# Install additional runtime dependencies -------------------------------------
 include(${PROJECT_SOURCE_DIR}/cmake/RuntimeDependencies.cmake)
 
 
 # 
-# Packages
+# Packages ####################################################################
 # 
 
 #
-# Target 'component_install'
+# Target 'component_install' ##################################################
 #
 
 add_custom_target(

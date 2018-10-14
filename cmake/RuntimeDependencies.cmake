@@ -1,14 +1,18 @@
+#
+# codoc
+# blacktriangles (c) 2018
+#
 
 # 
-# Default dependencies for the runtime-package
+# Default dependencies for the runtime-package ################################
 # 
 
-# Install 3rd-party runtime dependencies into runtime-component
+# Install 3rd-party runtime dependencies into runtime-component ---------------
 # install(FILES ... COMPONENT runtime)
 
 
 # 
-# Full dependencies for self-contained packages
+# Full dependencies for self-contained packages ###############################
 # 
 
 if(OPTION_SELF_CONTAINED)

@@ -1,3 +1,7 @@
+#
+# codoc
+# blacktriangles (c) 2018
+#
 
 # 
 # Platform and architecture setup #############################################

@@ -20,6 +20,7 @@ set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all ta
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
  # Include custom cmake modules
+include(CTest)
 include(cmake/GetGitRevisionDescription.cmake)
 
 #
@@ -154,9 +155,9 @@ endif()
 # 
 
 add_subdirectory(codoc)
-add_subdirectory(docs)
 add_subdirectory(deploy)
-
+add_subdirectory(deps)
+add_subdirectory(docs)
 
 # 
 # Deployment (global project files) ###########################################
