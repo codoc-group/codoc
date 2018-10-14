@@ -34,7 +34,7 @@ matrix:
           - ubuntu-toolchain-r-test
           packages:
           - cmake
-          - g++-5
+          - g++-7
 
     - os: linux
       compiler: gcc
