@@ -2,19 +2,19 @@
 // codoc (c) blacktriangles 2018
 //
 
-#include "codoc/config.hh"
+#include "codoc/config/document.hh"
 
 #include <cassert>
 #include <fstream>
 
-namespace codoc
+namespace codoc::config
 {
 
 //
 // constructor / destructor ###################################################
 //
 
-config::config()
+document::document()
 {
 }
 
@@ -22,7 +22,7 @@ config::config()
 // ----------------------------------------------------------------------------
 //
 
-config::config(const std::string& config_path)
+document::document(const std::string& config_path)
 {
     bool success = load(config_path);
     assert(success);
@@ -32,7 +32,7 @@ config::config(const std::string& config_path)
 // ----------------------------------------------------------------------------
 //
 
-config::config(std::istream& stream)
+document::document(std::istream& stream)
 {
     bool success = load(stream);
     assert(success);
@@ -42,19 +42,30 @@ config::config(std::istream& stream)
 // public methods #############################################################
 //
 
-bool config::load(const std::string& config_path)
+bool document::load(const std::string& config_path)
 {
     std::ifstream stream(config_path, std::ios::in);
-    return load(stream);
+    return parse(stream);
 }
 
 //
 // ----------------------------------------------------------------------------
 //
 
-bool config::load(std::istream& /*stream*/)
+bool document::parse(const std::string& data)
 {
-    return false;
+    std::stringstream stream(data, std::ios::in);
+    return parse(stream);
+}
+
+//
+// ----------------------------------------------------------------------------
+//
+
+bool document::parse(std::istream& stream)
+{
+    YAML::Parser parser(stream);
+    parser.GetNextDocument(m_document);
 }
 
 //

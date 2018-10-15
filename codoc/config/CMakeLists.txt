@@ -12,11 +12,13 @@ set(target config)
 set(include_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(source_path ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(headers
+    ${include_path}/codoc/config/document.hh
     ${include_path}/codoc/config.hh
 )
 
 set(sources
-    ${include_path}/codoc/config.cc
+    ${source_path}/codoc/config/document.cc
+
 )
 
 set(public_deps

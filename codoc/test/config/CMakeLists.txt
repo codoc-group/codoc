@@ -12,7 +12,8 @@ set(headers
 )
 
 set(sources
-    config_test.cc
+    document_test.cc
+    section_test.cc
 )
 
 set(deps
