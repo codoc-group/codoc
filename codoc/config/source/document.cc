@@ -15,6 +15,7 @@ namespace codoc::config
 //
 
 document::document()
+    : m_root()
 {
 }
 
@@ -23,8 +24,9 @@ document::document()
 //
 
 document::document(const std::string& config_path)
+    : m_root()
 {
-    bool success = load(config_path);
+    bool success = parse(config_path);
     assert(success);
 }
 
@@ -33,8 +35,9 @@ document::document(const std::string& config_path)
 //
 
 document::document(std::istream& stream)
+    : m_root()
 {
-    bool success = load(stream);
+    bool success = parse(stream);
     assert(success);
 }
 
@@ -64,8 +67,9 @@ bool document::parse(const std::string& data)
 
 bool document::parse(std::istream& stream)
 {
-    YAML::Parser parser(stream);
-    parser.GetNextDocument(m_document);
+    YAML::Node node = YAML::Load(stream);
+    m_root = section(node);
+    return true;
 }
 
 //

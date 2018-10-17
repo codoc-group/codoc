@@ -4,25 +4,23 @@
 
 #pragma once
 
-#include "codoc/config.hh"
-
 #include <yaml-cpp/yaml.h>
-
 #include <istream>
 
 namespace codoc::config
 {
 
 //
+// each section within the document is a YAML::Node
+//
+using section = YAML::Node;
+
+//
 // this class is responsible for serializing and storing configuration values
 // for a codoc run
 //
-class document 
+class document final
 {
-public: // types --------------------------------------------------------------
-
-    using section = YAML::Node;
-
 public: // constructor / destructor -------------------------------------------
     
     //
@@ -53,7 +51,7 @@ public: // constructor / destructor -------------------------------------------
     //
     // default destructor
     //
-    virtual ~document() = default;
+    ~document() = default;
 
 public: // public methods -----------------------------------------------------
 
@@ -73,10 +71,9 @@ public: // public methods -----------------------------------------------------
     bool parse(std::istream& stream);
 
     //
-    // gets a configuration section by key.  if the key does not exist,
-    // this will return a nullptr
+    // get the root section of this document
     //
-    section* get_section(const std::string& key) const;
+    const section& get_root() const;
 
 public: // operator overrides -------------------------------------------------
 
@@ -95,7 +92,7 @@ private: // members -----------------------------------------------------------
     //
     // The root sections of the document
     //
-    std::vector<section> m_sections;
+    section m_root;
 
 };
 
