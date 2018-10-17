@@ -76,8 +76,8 @@ function(codoc_add_function)
             ${include_path}
 
         INTERFACE
-            $<BUILD_INTERFACE:${ARG_SOURCE_PATH}>
-            $<BUILD_INTERFACE:${ARG_INCLUDE_PATH}>
+            $<BUILD_INTERFACE:${source_path}>
+            $<BUILD_INTERFACE:${include_path}>
             $<INSTALL_INTERFACE:include>
     )
 

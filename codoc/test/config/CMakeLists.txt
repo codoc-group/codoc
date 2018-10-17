@@ -8,4 +8,6 @@ codoc_add_test(
         document_test.cc
     DATA
         config_test.yml
+    PRIVATE_DEPS
+        config
 )
