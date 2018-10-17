@@ -1,5 +1,5 @@
 #
-# codoc blacktriangles (c) 2018 ###############################################
+# codoc (c) blacktriangles 2018 ###############################################
 #
 
 #
@@ -15,8 +15,7 @@ configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_N
 
 # Libraries -------------------------------------------------------------------
 set(IDE_FOLDER "")
-add_subdirectory(abstract)
-add_subdirectory(parse)
+add_subdirectory(config)
 
 # Tests -----------------------------------------------------------------------
 if(OPTION_BUILD_TESTS AND NOT MINGW)

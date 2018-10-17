@@ -22,7 +22,7 @@ endif()
 
 set(DEFAULT_PROJECT_OPTIONS
     DEBUG_POSTFIX             "d"
-    CXX_STANDARD              17 # Not available before CMake 3.1; see below for manual command line argument addition
+    CXX_STANDARD              17 # Not available before CMake 3.8
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
@@ -57,6 +57,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_DEFINITIONS ${DEFAULT_COMPILE_DEFINITIONS}
         _SCL_SECURE_NO_WARNINGS  # Calling any one of the potentially unsafe methods in the Standard C++ Library
         _CRT_SECURE_NO_WARNINGS  # Calling any one of the potentially unsafe methods in the CRT Library
+        WIN32_LEAN_AND_MEAN=1
     )
 endif ()
 
@@ -86,7 +87,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         $<$<CONFIG:Release>: 
         /Gw           # -> whole program global optimization
         /GS-          # -> buffer security check: no 
-        /LTGC         # -> whole program optimization: enable link-time code generation (disables Zi)
+        /LTCG         # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
         
@@ -109,6 +110,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         -Wswitch-default
         -Wuninitialized
         -Wmissing-field-initializers
+
+        $<$<CONFIG:Debug>:
+        -fsanitize=address
+        -fno-omit-frame-pointer
+        >
         
         $<$<CXX_COMPILER_ID:GNU>:
             -Wmaybe-uninitialized
@@ -139,9 +145,20 @@ endif ()
 
 set(DEFAULT_LINKER_OPTIONS)
 
+
+
 # Use pthreads on mingw and linux
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
-    set(DEFAULT_LINKER_OPTIONS
+    set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
         -pthread
     )
+
+    # there is a bug with the Ninja generator adding debug linker opts 
+    # see: https://cmake.org/pipermail/cmake/2012-March/049620.html
+    if(CMAKE_BUILD_TYPE MATCHES DEBUG)
+        set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
+            -fsanitize=address
+            -fno-omit-frame-pointer
+        )
+    endif()
 endif()

@@ -1,5 +1,5 @@
 #
-# codoc blacktriangles (c) 2018 ###############################################
+# codoc (c) blacktriangles 2018 ###############################################
 #
 
 #
@@ -14,7 +14,7 @@ set(gtest_hide_internal_symbols OFF CACHE BOOL "")
 
 add_subdirectory(googletest)
 
-# Create interface library to link against gmock
+# Create interface library to link against gtest and gmock
 add_library(gtest-dev INTERFACE)
 
 target_include_directories(gtest-dev
@@ -29,3 +29,17 @@ target_link_libraries(gtest-dev
     gtest
 )
 
+#
+# Build abseil-cpp ############################################################
+#
+
+add_subdirectory(abseil-cpp)
+
+#
+# Buld yaml-cpp ###############################################################
+#
+
+set(YAML_CPP_BUILD_TESTS   OFF CACHE BOOL "")
+set(YAML_CPP_BUILD_TOOLS   OFF CACHE BOOL "")
+set(YAML_CPP_BUILD_CONTRIB OFF CACHE BOOL "")
+add_subdirectory(yaml-cpp)
